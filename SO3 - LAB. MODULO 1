@@ -1,0 +1,45 @@
+ip a
+sudo dhclient
+sudo nano /etc/netplan/01-network-manager-all.yaml
+network:
+  version: 2
+  renderer: NetworkManager
+  ethernets:
+    enp0s3:
+      dhcp4: no
+      addresses: [192.168.1.50/24]
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses: [8.8.8.8,8.8.4.4]
+sudo netplan apply
+sudo nano /etc/resolv.conf
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+ping google.com
+
+
+
+sudo adduser nombre_usuario
+sudo usermod -aG sudo nombre_usuario
+sudo groupadd guest
+sudo adduser invitado
+sudo usermod -aG guest invitado
+sudo deluser invitado
+sudo groupdel guest
+
+
+
+
+mkdir materia
+cd materia
+touch estudiante.txt
+vi estudiante.txt
+Nombre: EMELY
+Matrícula: 20241140
+chmod 700 estudiante.txt
+chmod 070 estudiante.txt
+mkdir materia2
+cp estudiante.txt ../materia2/
+cd ..
+rm -r materia
+
